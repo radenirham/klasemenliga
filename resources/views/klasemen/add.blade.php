@@ -6,10 +6,10 @@ Single Input Score Pertandingan
 
 @section('content-main')
 <h4 class="card-title">Silahkan Input Score Pertandingan</h4>
-  
-    <form action="{{route('klasemen.store')}}" method="post" class="col s12">
+<div id="html-view-validations">
+  <div class="row">
+    <form action="{{route('klasemen.store')}}" method="post" class="formValidate0" id="formValidate0">
     @csrf
-    <div class="row">
       <label>Klub 1</label>
       <select class="browser-default" name="club">
           <option value="" disabled selected>Pilih Klub 1</option>
@@ -27,7 +27,7 @@ Single Input Score Pertandingan
               </button>
           </div>
           @endforeach
-      <div class="input-field col s6">
+      <div class="input-field col s12">
         <input id="score" type="text" name="score" class="validate">
         @foreach ($errors->get('score') as $msg)
           <div class="card-alert card red lighten-5">
@@ -41,8 +41,6 @@ Single Input Score Pertandingan
           @endforeach
         <label for="score">Score 1</label>
       </div>
-    </div>
-    <div class="row">
       <label>Klub 2</label>
       <select class="browser-default" name="club2">
           <option value="" disabled selected>Pilih Klub 2</option>
@@ -60,7 +58,7 @@ Single Input Score Pertandingan
               </button>
           </div>
           @endforeach  
-      <div class="input-field col s6">
+        <div class="input-field col s12">
           <input id="score2" type="text" name="score2" class="validate">
           @foreach ($errors->get('score2') as $msg)
           <div class="card-alert card red lighten-5">
@@ -74,10 +72,15 @@ Single Input Score Pertandingan
           @endforeach
           <label for="score2">Score 2</label>
         </div>
-      </div>
+        <div class="input-field col s12">
+        <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
     </div>
-    <button class="btn mb-2" id="add" >Submit</button>
+      </div>
     </form>
+  </div>
+</div>
 @endsection
 
 @section('content-js')

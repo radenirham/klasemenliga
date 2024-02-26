@@ -103,7 +103,7 @@ if ($Klasemen) {
     $Klasemen->save();  
 }
         
-        return redirect()->route('klasemen.index');
+        return redirect()->route('klasemen.index')->with('success','SUCCESS: Data has been added.');
     }
 
     public function store2(Request $request)
@@ -184,7 +184,7 @@ if (count($data['club2']) > 0) {
         }
     }
 }
-        return redirect()->route('klasemen.index');
+        return redirect()->route('klasemen.index')->with('success','SUCCESS: Data has been added.');
     }
 
     /**

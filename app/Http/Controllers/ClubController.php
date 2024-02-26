@@ -50,7 +50,7 @@ class ClubController extends Controller
             'nama' => $request->nama,
             'kota' => $request->kota,
         ]);
-        return redirect()->route('club.index');
+        return redirect()->route('club.index')->with('success','SUCCESS: Data has been added.');
     }
 
     /**

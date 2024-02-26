@@ -6,10 +6,10 @@ Multiple Input Score
 
 @section('content-main')
 <h4 class="card-title">Silahkan Input Score Pertandingan</h4>
-  
-    <form action="{{route('klasemen.store2')}}" method="post" class="col s12">
+<div id="html-view-validations">
+  <div class="row">
+    <form action="{{route('klasemen.store2')}}" method="post" class="formValidate0" id="formValidate0">
     @csrf
-    <div class="row">
       <label>Klub 1</label>
       <select class="browser-default" name="club[]">
           <option value="" disabled selected>Pilih Klub 1</option>
@@ -27,7 +27,7 @@ Multiple Input Score
               </button>
           </div>
           @endforeach
-      <div class="input-field col s6">
+      <div class="input-field col s12">
         <input id="score" type="text" name="score[]" class="validate">
         @foreach ($errors->get('score') as $msg)
           <div class="card-alert card red lighten-5">
@@ -41,8 +41,6 @@ Multiple Input Score
           @endforeach
         <label for="score">Score 1</label>
       </div>
-    </div>
-    <div class="row">
       <label>Klub 2</label>
       <select class="browser-default" name="club2[]">
           <option value="" disabled selected>Pilih Klub 2</option>
@@ -60,7 +58,7 @@ Multiple Input Score
               </button>
           </div>
           @endforeach  
-      <div class="input-field col s6">
+        <div class="input-field col s12">
           <input id="score2" type="text" name="score2[]" class="validate">
           @foreach ($errors->get('score2') as $msg)
           <div class="card-alert card red lighten-5">
@@ -74,20 +72,23 @@ Multiple Input Score
           @endforeach
           <label for="score2">Score 2</label>
         </div>
-      </div>
-      <div class="matches-container">
-      </div>
+      <div class="matches-container"></div>
     <a class="mb-6 btn waves-effect waves-light green darken-1" id="add-match">Tambah Data</a>
+    <div class="input-field col s12">
+        <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
     </div>
-    <button class="btn mb-2" id="add" >Submit</button>
     </form>
+  </div>
+</div>
 @endsection
 
 @section('content-js')
 <script>
         $(document).ready(function() {
             $('#add-match').click(function() {
-                var newMatch='<div class="match"><div class="row"><label>Klub 1</label><select class="browser-default" name="club[]"><option value="" disabled selected>Pilih Klub 1</option>@foreach($Club as $item)<option value="{{$item->id}}">{{$item->nama}}</option>@endforeach</select><div class="input-field col s6"><input id="score" type="text" name="score[]" class="validate"><label for="score">Score 1</label></div></div><div class="row"><label>Klub 2</label><select class="browser-default" name="club2[]"><option value="" disabled selected>Pilih Klub 2</option>@foreach($Club as $item)<option value="{{$item->id}}">{{$item->nama}}</option>@endforeach</select><div class="input-field col s6"><input id="score2" type="text" name="score2[]" class="validate"><label for="score2">Score 2</label></div></div><a class="mb-6 btn waves-effect waves-light red accent-2" id="remove-match">Hapus</a></div>'
+                var newMatch='<div class="match"><label>Klub 1</label><select class="browser-default" name="club[]"><option value="" disabled selected>Pilih Klub 1</option>@foreach($Club as $item)<option value="{{$item->id}}">{{$item->nama}}</option>@endforeach</select><div class="input-field col s12"><input id="score" type="text" name="score[]" class="validate"><label for="score">Score 1</label></div><label>Klub 2</label><select class="browser-default" name="club2[]"><option value="" disabled selected>Pilih Klub 2</option>@foreach($Club as $item)<option value="{{$item->id}}">{{$item->nama}}</option>@endforeach</select><div class="input-field col s12"><input id="score2" type="text" name="score2[]" class="validate"><label for="score2">Score 2</label></div><a class="mb-6 btn waves-effect waves-light red accent-2" id="remove-match">Hapus</a></div>'
                 $('.matches-container').append(newMatch);
             });
 

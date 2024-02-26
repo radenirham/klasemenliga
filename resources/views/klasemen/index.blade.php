@@ -5,6 +5,16 @@ Klasemen
 @endsection
 
 @section('content-main')
+@if (Session::has('success'))
+<div class="card-alert card green lighten-5">
+    <div class="card-content green-text">
+        <p>{{ Session::get('success') }}</p>
+    </div>
+    <button type="button" class="close green-text" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+@endif
 <h4 class="card-title">Klasemen Liga</h4>
 <h7 class="card-title">Input Score Pertandingan</h7>
 <a class="btn mb-2" id="add" href='{{route('klasemen.create')}}' method="get">Satu per Satu</a>
@@ -39,4 +49,13 @@ Klasemen
         </tbody>
     </thead>
 </table>
+@endsection
+
+@section('content-js')
+    <script src="{{asset('app-assets/vendors/noUiSlider/nouislider.js')}}"></script>
+    <script src="{{asset('app-assets/js/plugins.js')}}"></script>
+    <script src="{{asset('app-assets/js/search.js')}}"></script>
+    <script src="{{asset('app-assets/js/custom/custom-script.js')}}"></script>
+    <script src="{{asset('app-assets/js/scripts/form-elements.js')}}"></script>
+    <script src="{{asset('app-assets/js/scripts/ui-alerts.js')}}"></script>
 @endsection
